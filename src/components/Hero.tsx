@@ -55,11 +55,16 @@ const Hero = () => {
           </div>
 
           <div className="relative">
-            <div className="relative z-10">
+            <div style={{ backgroundColor: "white", padding: "20px" }}>
+              <h2 style={{ color: "black" }}>Teste de imagem externa</h2>
               <img
-                src="https://via.placeholder.com/300x300?text=Manoel"
-                alt="Manoel Florencio - Desenvolvedor Fullstack"
-                className="w-full max-w-md mx-auto mt-8 mb-4 rounded-2xl shadow-2xl"
+                src="https://via.placeholder.com/300x300?text=Funcionando"
+                alt="Imagem teste"
+                style={{
+                  border: "2px solid red",
+                  display: "block",
+                  margin: "0 auto",
+                }}
               />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/20 to-blue-500/20 rounded-2xl blur-xl"></div>
