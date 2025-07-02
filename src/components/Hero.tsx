@@ -1,16 +1,19 @@
-import React from 'react';
-import { ArrowRight, Download } from 'lucide-react';
+import React from "react";
+import { ArrowRight, Download } from "lucide-react";
 
 const Hero = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <section id="home" className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center relative overflow-hidden">
+    <section
+      id="home"
+      className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center relative overflow-hidden"
+    >
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -22,23 +25,27 @@ const Hero = () => {
           <div className="text-center lg:text-left">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
               Desenvolvo
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"> experiências digitais </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                {" "}
+                experiências digitais{" "}
+              </span>
               completas
             </h1>
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Sites modernos, sistemas personalizados e soluções inteligentes para seu negócio. 
-              Da ideia ao sistema final, transformo conceitos em realidade digital.
+              Sites modernos, sistemas personalizados e soluções inteligentes
+              para seu negócio. Da ideia ao sistema final, transformo conceitos
+              em realidade digital.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <button
-                onClick={() => scrollToSection('portfolio')}
+                onClick={() => scrollToSection("portfolio")}
                 className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:from-cyan-600 hover:to-blue-700 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-cyan-500/25"
               >
                 Ver Projetos
                 <ArrowRight className="h-5 w-5" />
               </button>
               <button
-                onClick={() => scrollToSection('contato')}
+                onClick={() => scrollToSection("contato")}
                 className="border-2 border-cyan-400 text-cyan-400 px-8 py-4 rounded-lg font-semibold hover:bg-cyan-400 hover:text-slate-900 transition-all duration-300 flex items-center justify-center gap-2"
               >
                 Solicitar Orçamento
@@ -50,7 +57,7 @@ const Hero = () => {
           <div className="relative">
             <div className="relative z-10">
               <img
-                src="/perfil-manoel.jpg"
+                src="https://via.placeholder.com/300x300?text=Manoel"
                 alt="Manoel Florencio - Desenvolvedor Fullstack"
                 className="w-full max-w-md mx-auto mt-8 mb-4 rounded-2xl shadow-2xl"
               />
