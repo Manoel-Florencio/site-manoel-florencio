@@ -50,7 +50,7 @@ const Hero = () => {
           <div className="relative">
             <div className="relative z-10">
               <img
-                src="/img-manoel.jpg.jpg"
+                src="/img-manoel.jpg"
                 alt="Manoel Florencio - Desenvolvedor Fullstack"
                 className="w-full max-w-md mx-auto mt-8 mb-4 rounded-2xl shadow-2xl"
               />
