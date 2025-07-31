@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Download } from 'lucide-react';
+import imgManoel from '../assets/img-manoel.jpg';
 
 const Hero = () => {
   const scrollToSection = (sectionId: string) => {
@@ -10,7 +11,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center relative overflow-hidden">
+    <section id="home" className="min-h-screen pt-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -50,7 +51,7 @@ const Hero = () => {
           <div className="relative">
             <div className="relative z-10">
               <img
-                src="/perfil-manoel.jpg"
+                src={imgManoel}
                 alt="Manoel Florencio - Desenvolvedor Fullstack"
                 className="w-full max-w-md mx-auto mt-8 mb-4 rounded-2xl shadow-2xl"
               />
