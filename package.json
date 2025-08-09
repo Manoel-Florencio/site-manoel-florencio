@@ -1,7 +1,6 @@
 {
   "name": "vite-react-typescript-starter",
   "private": true,
-   "homepage": "https://manoelflorencio.github.io/site-manoel-florencio",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
