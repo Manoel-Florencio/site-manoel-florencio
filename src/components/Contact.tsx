@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, MessageCircle } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,12 +11,63 @@ const Contact = () => {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // Função para gerar a URL do WhatsApp com as informações do formulário
+  const generateWhatsAppURL = (data: typeof formData) => {
+    const phoneNumber = '5592986289724'; // Seu número do WhatsApp (substitua pelo seu)
+    
+    const message = `Olá! Gostaria de solicitar um orçamento:
+
+*Nome:* ${data.name}
+*Email:* ${data.email}
+*WhatsApp:* ${data.whatsapp}
+*Tipo de Projeto:* ${data.projectType}
+
+*Descrição do Projeto:*
+${data.message}
+
+Aguardo seu retorno!`;
+
+    const encodedMessage = encodeURIComponent(message);
+    return `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+  };
+
+  // Função para abrir WhatsApp diretamente (botão de contato rápido)
+  const openWhatsAppDirect = () => {
+    const phoneNumber = '5592986289724'; // Seu número do WhatsApp (substitua pelo seu)
+    const message = 'Olá! Gostaria de conversar sobre um projeto.';
+    const encodedMessage = encodeURIComponent(message);
+    const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(url, '_blank');
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Aqui você implementaria a lógica de envio do formulário
-    console.log('Form submitted:', formData);
+    
+    // Validar se todos os campos obrigatórios estão preenchidos
+    if (!formData.name || !formData.email || !formData.whatsapp || !formData.projectType || !formData.message) {
+      alert('Por favor, preencha todos os campos obrigatórios.');
+      return;
+    }
+
+    // Gerar URL do WhatsApp com as informações do formulário
+    const whatsappURL = generateWhatsAppURL(formData);
+    
+    // Abrir WhatsApp em nova aba
+    window.open(whatsappURL, '_blank');
+    
+    // Mostrar feedback de sucesso
     setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
+    setTimeout(() => {
+      setIsSubmitted(false);
+      // Limpar formulário após envio
+      setFormData({
+        name: '',
+        email: '',
+        whatsapp: '',
+        projectType: '',
+        message: ''
+      });
+    }, 3000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -59,7 +110,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="text-white font-semibold">WhatsApp</h4>
-                  <p className="text-gray-300">+55 (92) 98139-5614</p>
+                  <p className="text-gray-300">+55 (92) 98628-9724</p>
                 </div>
               </div>
 
@@ -72,6 +123,17 @@ const Contact = () => {
                   <p className="text-gray-300">Brasil (Atendimento Remoto)</p>
                 </div>
               </div>
+            </div>
+
+            {/* Botão de WhatsApp Direto */}
+            <div className="mb-8">
+              <button
+                onClick={openWhatsAppDirect}
+                className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transform hover:scale-105"
+              >
+                <MessageCircle className="h-6 w-6" />
+                Falar Direto no WhatsApp
+              </button>
             </div>
 
             <div className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl p-6 border border-cyan-500/20">
@@ -89,6 +151,13 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div className="bg-slate-900 rounded-xl p-8">
+            <div className="mb-6">
+              <h3 className="text-xl font-bold text-white mb-2">Solicitar Orçamento via WhatsApp</h3>
+              <p className="text-gray-300 text-sm">
+                Preencha o formulário abaixo e suas informações serão enviadas diretamente para o meu WhatsApp
+              </p>
+            </div>
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -154,12 +223,12 @@ const Contact = () => {
                     className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white focus:border-cyan-400 focus:outline-none transition-colors duration-200"
                   >
                     <option value="">Selecione o tipo</option>
-                    <option value="site">Site Institucional</option>
-                    <option value="ecommerce">E-commerce</option>
-                    <option value="landing">Landing Page</option>
-                    <option value="sistema">Sistema Web</option>
-                    <option value="automacao">Automação</option>
-                    <option value="outro">Outro</option>
+                    <option value="Site Institucional">Site Institucional</option>
+                    <option value="E-commerce">E-commerce</option>
+                    <option value="Landing Page">Landing Page</option>
+                    <option value="Sistema Web">Sistema Web</option>
+                    <option value="Automação">Automação</option>
+                    <option value="Outro">Outro</option>
                   </select>
                 </div>
               </div>
@@ -186,18 +255,18 @@ const Contact = () => {
                 className={`w-full py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
                   isSubmitted
                     ? 'bg-green-600 text-white'
-                    : 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:from-cyan-600 hover:to-blue-700'
+                    : 'bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700'
                 }`}
               >
                 {isSubmitted ? (
                   <>
                     <CheckCircle className="h-5 w-5" />
-                    Mensagem Enviada!
+                    Redirecionando para WhatsApp...
                   </>
                 ) : (
                   <>
-                    <Send className="h-5 w-5" />
-                    Solicitar Orçamento
+                    <MessageCircle className="h-5 w-5" />
+                    Enviar via WhatsApp
                   </>
                 )}
               </button>
@@ -205,7 +274,7 @@ const Contact = () => {
 
             <div className="mt-6 p-4 bg-slate-800 rounded-lg">
               <p className="text-gray-300 text-sm text-center">
-                🔒 Seus dados estão seguros e não serão compartilhados com terceiros
+                🔒 Seus dados estão seguros e serão enviados diretamente para o WhatsApp
               </p>
             </div>
           </div>
@@ -216,3 +285,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

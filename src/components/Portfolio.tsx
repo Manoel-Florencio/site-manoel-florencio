@@ -114,7 +114,7 @@ const Portfolio = () => {
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="flex gap-4">
+                  {/* <div className="flex gap-4">
                     <a
                       href={project.link}
                       className="w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center hover:bg-cyan-600 transition-colors duration-200"
@@ -127,7 +127,7 @@ const Portfolio = () => {
                     >
                       <Github className="h-5 w-5 text-white" />
                     </a>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 

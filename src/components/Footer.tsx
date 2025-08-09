@@ -13,6 +13,19 @@ const Footer = () => {
     }
   };
 
+  // Funções para abrir redes sociais
+  const openLinkedIn = () => {
+    window.open('https://www.linkedin.com/in/manoel-flor%C3%AAncio/', '_blank');
+  };
+
+  const openGitHub = () => {
+    window.open('https://github.com/Manoel-Florencio', '_blank');
+  };
+
+  const openInstagram = () => {
+    window.open('https://www.instagram.com/manoell_florencio/', '_blank');
+  };
+
   return (
     <footer className="bg-slate-900 border-t border-slate-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,25 +44,33 @@ const Footer = () => {
             
             {/* Social Links */}
             <div className="flex space-x-4">
-              <a
-                href="#"
-                className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-cyan-500 transition-colors duration-300 group"
+              <button
+                onClick={openLinkedIn}
+                className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-all duration-300 group transform hover:scale-110"
+                title="LinkedIn"
               >
-                <Linkedin className="h-5 w-5 text-gray-400 group-hover:text-white" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-slate-600 transition-colors duration-300 group"
+                <Linkedin className="h-5 w-5 text-gray-400 group-hover:text-white transition-colors duration-300" />
+              </button>
+              <button
+                onClick={openGitHub}
+                className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-all duration-300 group transform hover:scale-110"
+                title="GitHub"
               >
-                <Github className="h-5 w-5 text-gray-400 group-hover:text-white" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-pink-500 transition-colors duration-300 group"
+                <Github className="h-5 w-5 text-gray-400 group-hover:text-white transition-colors duration-300" />
+              </button>
+              <button
+                onClick={openInstagram}
+                className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 transition-all duration-300 group transform hover:scale-110"
+                title="Instagram"
               >
-                <Instagram className="h-5 w-5 text-gray-400 group-hover:text-white" />
-              </a>
+                <Instagram className="h-5 w-5 text-gray-400 group-hover:text-white transition-colors duration-300" />
+              </button>
             </div>
+
+            {/* Texto informativo sobre redes sociais */}
+            <p className="text-gray-400 text-sm mt-4">
+              Conecte-se comigo nas redes sociais para acompanhar projetos e novidades
+            </p>
           </div>
 
           {/* Quick Links */}
@@ -102,6 +123,7 @@ const Footer = () => {
             <button
               onClick={scrollToTop}
               className="w-10 h-10 bg-cyan-500 rounded-lg flex items-center justify-center hover:bg-cyan-600 transition-colors duration-300 group"
+              title="Voltar ao topo"
             >
               <ArrowUp className="h-5 w-5 text-white group-hover:scale-110 transition-transform duration-200" />
             </button>
@@ -123,3 +145,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

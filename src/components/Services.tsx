@@ -75,12 +75,12 @@ const Services = () => {
                 ))}
               </div>
 
-              <div className="mt-6 pt-6 border-t border-slate-600">
+              {/* <div className="mt-6 pt-6 border-t border-slate-600">
                 <button className="text-cyan-400 font-semibold hover:text-cyan-300 transition-colors duration-200 flex items-center gap-2">
                   Saiba mais
                   <div className="w-4 h-4 border-t-2 border-r-2 border-cyan-400 transform rotate-45 group-hover:translate-x-1 transition-transform duration-200"></div>
                 </button>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>
