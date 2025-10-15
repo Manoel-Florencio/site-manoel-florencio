@@ -1,169 +1,196 @@
-import React from 'react';
-import { ExternalLink, Github, Eye } from 'lucide-react';
+import { useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import pedreiroImg from '../assets/img-pedreiro.png';
+import ecommerceImg from '../assets/img-e-commerce.png'; 
+import landingImg from '../assets/img-landing.png';
 
-const Portfolio = () => {
-  const projects = [
-    {
-      title: 'E-commerce Moderno',
-      client: 'TechStore Brasil',
-      description: 'Plataforma completa de e-commerce com painel administrativo, integração de pagamentos e sistema de estoque.',
-      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      category: 'E-commerce',
-      link: '#',
-      github: '#'
-    },
-    {
-      title: 'Sistema de Gestão',
-      client: 'Consultoria Alpha',
-      description: 'Sistema web para gestão de clientes, projetos e relatórios financeiros com dashboard interativo.',
-      image: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React', 'Express', 'MySQL', 'Chart.js'],
-      category: 'Sistema Web',
-      link: '#',
-      github: '#'
-    },
-    {
-      title: 'Landing Page Conversão',
-      client: 'Marketing Pro',
-      description: 'Landing page de alta conversão para curso online com integração de pagamentos e automações.',
-      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['HTML5', 'CSS3', 'JavaScript', 'N8N'],
-      category: 'Landing Page',
-      link: '#',
-      github: '#'
-    },
-    {
-      title: 'App de Delivery',
-      client: 'RestaurantePlus',
-      description: 'Aplicação web para delivery com painel do restaurante, tracking de pedidos e integração com WhatsApp.',
-      image: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React', 'Node.js', 'Socket.io', 'WhatsApp API'],
-      category: 'Web App',
-      link: '#',
-      github: '#'
-    },
-    {
-      title: 'Portal Corporativo',
-      client: 'Empresa Global',
-      description: 'Portal institucional responsivo com área restrita, blog integrado e sistema de newsletter.',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React', 'TypeScript', 'Strapi', 'PostgreSQL'],
-      category: 'Site Institucional',
-      link: '#',
-      github: '#'
-    },
-    {
-      title: 'Automação de Processos',
-      client: 'LogisticaTech',
-      description: 'Sistema de automação para integração entre CRM, planilhas e notificações automáticas.',
-      image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['N8N', 'Google Sheets', 'Webhooks', 'Slack API'],
-      category: 'Automação',
-      link: '#',
-      github: '#'
-    }
-  ];
+interface Project {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+  technologies: string[];
+  demoUrl: string;
+}
 
-  const categories = ['Todos', 'E-commerce', 'Sistema Web', 'Landing Page', 'Web App', 'Site Institucional', 'Automação'];
-  const [activeCategory, setActiveCategory] = React.useState('Todos');
+const projects: Project[] = [
+  {
+    id: 1,
+    name: 'WebSite profissional',
+    description: 'Desenvolvemos websites modernos e responsivos que representam a identidade e o propósito de empresas e empreendedores. Cada projeto é pensado para fortalecer a presença digital e transmitir credibilidade ao público.',
+    image: pedreiroImg,
+    technologies: ['JavaScript', 'React.js', 'CSS3', 'HTML5'],
+    demoUrl: 'https://website-pedreiro.vercel.app/'
+  },
+  {
+    id: 2,
+    name: 'App de Delivery Inteligente',
+    description: 'Aplicativo de delivery com IA para otimização de rotas, previsão de demanda, sistema de avaliações e chatbot integrado para atendimento.',
+    image: 'https://images.pexels.com/photos/4393426/pexels-photo-4393426.jpeg?auto=compress&cs=tinysrgb&w=800',
+    technologies: ['React Native', 'Express.js', 'MongoDB', 'Firebase', 'Google Maps'],
+    demoUrl: '#'
+  },
+  {
+    id: 3,
+    name: 'Landing Page de Alta Conversão',
+    description: 'Landing pages criadas com foco em resultados, design estratégico e usabilidade. Perfeitas para campanhas de marketing, captação de leads e lançamentos de produtos, com estrutura otimizada para SEO e conversão.',
+    image: landingImg,
+    technologies: ['JavaScript', 'React.js', 'CSS3', 'HTML5'],
+    demoUrl: '#'
+  },
+  {
+    id: 4,
+    name: 'E-commerce Inteligente',
+    description: 'Loja online com recomendações por IA, analytics avançado e checkout otimizado para conversão.',
+    image: ecommerceImg,
+    technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'AI/ML'],
+    demoUrl: 'https://e-commerce-tech-67fw.vercel.app/'
+  },
+  {
+    id: 5,
+    name: 'i9Vet - Petshop Online',
+    description: 'Plataforma veterinária com agendamento online, prontuário digital e e-commerce para produtos pet.',
+    image: 'https://images.pexels.com/photos/4498185/pexels-photo-4498185.jpeg?auto=compress&cs=tinysrgb&w=800',
+    technologies: ['PHP', 'MySQL', 'Bootstrap', 'jQuery', 'PayPal'],
+    demoUrl: '#'
+  },
+  {
+    id: 6,
+    name: 'Sistema Hospitalar 9.0',
+    description: 'Gestão hospitalar completa com prontuário eletrônico, automação de processos e integração com laboratórios.',
+    image: 'https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=800',
+    technologies: ['Angular', '.NET Core', 'SQL Server', 'Azure', 'Automação'],
+    demoUrl: '#'
+  },
+  {
+    id: 7,
+    name: 'Sistema Financeiro Empresarial',
+    description: 'Controle financeiro completo com fluxo de caixa, conciliação bancária e relatórios gerenciais.',
+    image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800',
+    technologies: ['React', 'Django', 'PostgreSQL', 'Redis', 'Docker'],
+    demoUrl: '#'
+  }
+];
 
-  const filteredProjects = activeCategory === 'Todos' 
-    ? projects 
-    : projects.filter(project => project.category === activeCategory);
+const FeaturedProjects = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const projectsPerPage = 3;
+  const totalPages = Math.ceil(projects.length / projectsPerPage);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % totalPages);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + totalPages) % totalPages);
+  };
+
+  const visibleProjects = projects.slice(
+    currentIndex * projectsPerPage,
+    (currentIndex + 1) * projectsPerPage
+  );
 
   return (
-    <section id="portfolio" className="py-20 bg-slate-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 px-6 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 min-h-screen">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4">Meu Portfólio</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Projetos que demonstram minha experiência e qualidade técnica
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            Projetos em Destaque
+          </h2>
+          <p className="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">
+            Conheça alguns dos projetos que desenvolvemos e que estão transformando negócios com inovação infinita.
           </p>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category) => (
+        <div className="relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {visibleProjects.map((project) => (
+              <div
+                key={project.id}
+                className="bg-slate-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300 transform hover:-translate-y-2 group"
+              >
+                <div className="relative h-56 overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
+                </div>
+
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors">
+                    {project.name}
+                  </h3>
+
+                  <p className="text-slate-400 mb-6 text-sm leading-relaxed min-h-[4rem]">
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 hover:bg-cyan-500/20 transition-colors"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <a
+                    href={project.demoUrl}
+                    className="inline-block px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all duration-200 w-full text-center shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40"
+                  >
+                    Ver Demo
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-center justify-center gap-8">
             <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                activeCategory === category
-                  ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white'
-                  : 'bg-slate-800 text-gray-300 hover:bg-slate-700'
-              }`}
+              onClick={prevSlide}
+              className="p-4 rounded-full bg-slate-800/80 border border-slate-700 hover:border-cyan-500 hover:bg-slate-700 text-slate-400 hover:text-cyan-400 transition-all duration-200"
+              aria-label="Projetos anteriores"
             >
-              {category}
+              <ChevronLeft className="w-6 h-6" />
             </button>
-          ))}
-        </div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
-            <div
-              key={index}
-              className="bg-slate-800 rounded-xl overflow-hidden hover:bg-slate-700 transition-all duration-300 hover:scale-105 group"
-            >
-              <div className="relative overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+            <div className="flex items-center gap-3">
+              {Array.from({ length: totalPages }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`transition-all duration-300 rounded-full ${
+                    index === currentIndex
+                      ? 'w-10 h-2.5 bg-cyan-500'
+                      : 'w-2.5 h-2.5 bg-slate-600 hover:bg-slate-500'
+                  }`}
+                  aria-label={`Ir para página ${index + 1}`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  {/* <div className="flex gap-4">
-                    <a
-                      href={project.link}
-                      className="w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center hover:bg-cyan-600 transition-colors duration-200"
-                    >
-                      <Eye className="h-5 w-5 text-white" />
-                    </a>
-                    <a
-                      href={project.github}
-                      className="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center hover:bg-slate-600 transition-colors duration-200"
-                    >
-                      <Github className="h-5 w-5 text-white" />
-                    </a>
-                  </div> */}
-                </div>
-              </div>
-
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-cyan-400 text-sm font-semibold">{project.category}</span>
-                  <ExternalLink className="h-4 w-4 text-gray-400" />
-                </div>
-                
-                <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                <p className="text-gray-400 text-sm mb-3">{project.client}</p>
-                <p className="text-gray-300 text-sm leading-relaxed mb-4">{project.description}</p>
-
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-3 py-1 bg-slate-700 text-cyan-400 text-xs rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        <div className="text-center mt-12">
-          <button className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:from-cyan-600 hover:to-blue-700 transition-all duration-300">
-            Ver Todos os Projetos
-          </button>
+            <button
+              onClick={nextSlide}
+              className="p-4 rounded-full bg-slate-800/80 border border-slate-700 hover:border-cyan-500 hover:bg-slate-700 text-slate-400 hover:text-cyan-400 transition-all duration-200"
+              aria-label="Próximos projetos"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
+
+          <div className="text-center mt-8">
+            <p className="text-slate-400 font-semibold text-lg">
+              <span className="text-cyan-400">{currentIndex + 1}</span> / {totalPages} projetos
+            </p>
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export default Portfolio;
+export default FeaturedProjects;
