@@ -3,6 +3,8 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import pedreiroImg from '../assets/img-pedreiro.png';
 import ecommerceImg from '../assets/img-e-commerce.png'; 
 import landingImg from '../assets/img-landing.png';
+import financeiroImg from '../assets/img-financeiro.jpg';
+import portalImg from '../assets/img-portal.png';
 
 interface Project {
   id: number;
@@ -56,19 +58,19 @@ const projects: Project[] = [
   },
   {
     id: 6,
-    name: 'Sistema Hospitalar 9.0',
-    description: 'Gestão hospitalar completa com prontuário eletrônico, automação de processos e integração com laboratórios.',
-    image: 'https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=800',
+    name: 'Sistema Corporativo Empresarial',
+    description: 'Gestão empresarial completa com relatorios eletrônico, automação de processos e integração com todos os fucionarios.',
+    image: portalImg,
     technologies: ['Angular', '.NET Core', 'SQL Server', 'Azure', 'Automação'],
-    demoUrl: '#'
+    demoUrl: 'https://sistema-colaborativo-rosy.vercel.app/'
   },
   {
     id: 7,
     name: 'Sistema Financeiro Empresarial',
     description: 'Controle financeiro completo com fluxo de caixa, conciliação bancária e relatórios gerenciais.',
-    image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: financeiroImg,
     technologies: ['React', 'Django', 'PostgreSQL', 'Redis', 'Docker'],
-    demoUrl: '#'
+    demoUrl: 'https://sistema-financeiro-two-zeta.vercel.app/'
   }
 ];
 
