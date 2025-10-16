@@ -3,8 +3,8 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import pedreiroImg from '../assets/img-pedreiro.png';
 import ecommerceImg from '../assets/img-e-commerce.png'; 
 import landingImg from '../assets/img-landing.png';
-import financeiroImg from '../assets/img-financeiro.jpg';
 import portalImg from '../assets/img-portal.png';
+import financeiroImg from '../assets/img-financeiro.png';
 
 interface Project {
   id: number;
